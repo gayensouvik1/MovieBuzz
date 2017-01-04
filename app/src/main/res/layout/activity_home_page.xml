@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="4dp"
+    android:rowCount="2"
+    android:columnCount="2"
+    android:background="#b3fff0"
+    >
+
+
+    <Button
+        android:text="Latest Hollywood Movies"
+        android:background="#1a75ff"
+        android:textColor="#ffffff"
+        android:layout_margin="4dp"
+        android:layout_height="200dp"
+        android:id="@+id/latestHollyBtn"
+        android:layout_width="168dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        />
+    <Button
+        android:text="IMDB top 250 movies"
+        android:background="#1a75ff"
+        android:textColor="#ffffff"
+        android:layout_margin="4dp"
+        android:layout_height="200dp"
+        android:id="@+id/textView2"
+        android:layout_width="168dp"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:textSize="20sp"
+        />
+    <Button
+        android:text="Latest Bollywood Movies"
+        android:background="#1a75ff"
+        android:textColor="#ffffff"
+        android:layout_margin="4dp"
+        android:layout_height="200dp"
+        android:id="@+id/textView3"
+        android:layout_width="168dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        />
+    <Button
+        android:text="Search Movies"
+        android:background="#1a75ff"
+        android:textColor="#ffffff"
+        android:layout_margin="4dp"
+        android:layout_height="200dp"
+        android:id="@+id/textView4"
+        android:layout_width="168dp"
+        android:layout_marginTop="27dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        />
+
+</GridLayout>
