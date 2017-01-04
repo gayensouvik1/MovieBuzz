@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,13 +25,15 @@ import java.util.List;
 
 public class LatestHolly extends AppCompatActivity {
 
-    ListView listView;
+    GridView gridView;
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_latest_holly);
 
-        listView = (ListView)findViewById(R.id.listView);
+        gridView = (GridView) findViewById(R.id.gridview);
+        textView = (TextView)findViewById(R.id.textView);
 
 
         new doIt().execute();
@@ -40,33 +43,29 @@ public class LatestHolly extends AppCompatActivity {
 
     public class doIt extends AsyncTask<String,String,List<LatestModel>> {
 
-        String words="",mName="";
+        String words="",mName="",all="hello";
         double rate=0;
+        String urls[] = new String[255];
+        double rating[] = new double[255];
 
         protected List<LatestModel> doInBackground(String... params){
 
             List<LatestModel> LatestModelList = new ArrayList<>();
-            String urls[] = new String[255];
-            double rating[] = new double[255];
+
             try {
 
-                Document doc = Jsoup.connect("http://www.imdb.com/chart/top").get();
-                Elements link = doc.select("img[src$=.jpg]");
-                Elements content = doc.select("a[href^=/title/][title]");
-                Elements ratings = doc.select("strong[title]");
+                Document doc = Jsoup.connect("http://www.bollymoviereviewz.com/2014/04/latest-hollywood-movies-2014-releases.html").get();
+                all = doc.text();
+                Elements link = doc.getElementsByClass("kltat");
+                Elements content = doc.getElementsByClass("kltat");
+
                 int i=0;
                 for(Element e:link){
-                    words = e.attr("src");
+                    words = e.text();
                     urls[i] = words;
                     i++;
                 }
-                i=0;
-                for(Element e:ratings){
 
-                    rate=Double.parseDouble(e.text());
-                    rating[i] = rate;
-                    i++;
-                }
                 i=0;
                 for(Element e:content){
 
@@ -76,7 +75,7 @@ public class LatestHolly extends AppCompatActivity {
 
                     LatestModel.setName(mName);
                     LatestModel.setImageURL(urls[i]);
-                    LatestModel.setRating(rating[i]);
+                    LatestModel.setRating(0);
 
                     LatestModelList.add(LatestModel);
                     i++;
@@ -100,7 +99,8 @@ public class LatestHolly extends AppCompatActivity {
             super.onPostExecute(result);
 
             LatestAdapter adapter = new LatestAdapter(LatestHolly.this,R.layout.latest_content,result);
-            listView.setAdapter(adapter);
+            gridView.setAdapter(adapter);
+            textView.setText(all);
 
         }
     }

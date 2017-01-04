@@ -44,19 +44,14 @@ public class LatestAdapter extends ArrayAdapter {
 
         }
 
-        TextView name;
         ImageView imageView;
-        RatingBar rating;
 
-        name = (TextView)convertView.findViewById(R.id.name);
-        imageView = (ImageView)convertView.findViewById(R.id.movieIcon);
-        rating = (RatingBar)convertView.findViewById(R.id.ratingBar);
+        imageView = (ImageView)convertView.findViewById(R.id.latestIcon);
 
-        name.setText(movieModelsList.get(position).getName());
-        Picasso.with(getContext()).load(movieModelsList.get(position).getImageURL()).into(imageView);
 
-        float myRating = (float) movieModelsList.get(position).getRating();
-        rating.setRating(myRating/2);
+
+        //Picasso.with(getContext()).load(movieModelsList.get(position).getImageURL()).into(imageView);
+
 
         return convertView;
     }

@@ -1,5 +1,7 @@
 package com.example.souvik.moviebuzz.models;
 
+import static android.R.attr.rating;
+
 /**
  * Created by souvik on 4/1/17.
  */
@@ -9,6 +11,7 @@ public class LatestModel {
     private String imageURL;
     private String name;
     private double rating;
+
 
     public String getName(){
         return name;
